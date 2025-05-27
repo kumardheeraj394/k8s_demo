@@ -1,23 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nodejsapp
-  namespace: argocd  # Argo CD's namespace
+  name: nodejs-app
+  namespace: argocd
 spec:
   project: default
-
   source:
-    repoURL: https://github.com/kumardheeraj394/k8s_demo.git
+    repoURL: 'https://github.com/kumardheeraj394/k8s_demo.git'
     targetRevision: HEAD
-    path: k8s-manifests  # Adjust this to the correct directory in your repo
-
+    path: k8s-manifests
   destination:
-    server: https://kubernetes.default.svc  # Deploy into the same cluster
-    namespace: nodejsapp  # Target namespace (should exist or be created)
-
+    server: 'https://kubernetes.default.svc'
+    namespace: nodejsapp
   syncPolicy:
     automated:
-      prune: true         # Automatically delete resources no longer in Git
-      selfHeal: true      # Automatically fix out-of-sync resources
-    syncOptions:
-    - CreateNamespace=true  # Creates the namespace if it doesn’t exist
+      prune: true
+      selfHeal: true
