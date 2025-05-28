@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nodejsapp
-        image: dheeraj394/express-demo:03
+        image: dheeraj394/nodejs:03
         ports:
         - containerPort: 3000
